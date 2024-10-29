@@ -1,3 +1,3 @@
 # hyprdots
-<h1>my hyprdotfiles (work in progress)<h1/>
+<h2>my hyprland dotfiles (work in progress)<h2/>
 
