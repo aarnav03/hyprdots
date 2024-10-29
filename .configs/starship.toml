@@ -7,7 +7,6 @@ format = """
 $sudo\
 $os\
 $jobs\
-$username\
 $git_status\
 $directory\
 $git_commit$git_state$git_metrics\
