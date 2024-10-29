@@ -48,6 +48,12 @@ renamed = '#ce63ff' #lilac
 deleted = '#f54caf' #pink
 grey= '#2e3b52' #grey jevu
 cyan2 = '#008b8b' #close to cyan dark
+c1 = '#004480' # blue light
+c2 = '#002240' # blue dark
+c3 = '#c6e7ff' # blue extra light
+c4 = '#303030' # gray
+c5 = '#808080' # gray light
+
 
 [sudo]
 format = '[ ]($style)'
@@ -114,7 +120,7 @@ disabled = false
 ".config" = ". "
 
 [git_branch]
-format = '[](bg:tert fg:prim)[ $symbol $branch(:$remote_branch) ]($style)[](fg:sec bg:prim)[](fg:prim bg:tert)'
+format = '[](bg:tert fg:prim)[ $symbol $branch(:$remote_branch) ](bg:tert fg:c5 bold)[](fg:sec bg:prim)[](fg:prim bg:tert)'
 style = 'fg:prim bold bg:tert'
 symbol = ''
 #ignore_branches = ['master', 'main']
