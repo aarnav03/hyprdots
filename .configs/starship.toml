@@ -91,7 +91,7 @@ modified = '[](fg:sec bg:modified)[](fg:modified bg:sec)'
 staged = '[](fg:sec bg:staged)[](fg:staged bg:sec)'
 renamed = '[](fg:sec bg:renamed)[](fg:renamed bg:sec)'
 deleted = '[](fg:sec bg:deleted)[](fg:deleted bg:sec)'
-disabled = true
+disabled = false
 
 [directory]
 format = '[ ]($style)[$read_only](fg:primt bg:prim)[$repo_root]($repo_root_style)[$path](fg:primt bold bg:prim)[](fg:prim bg:sec)'
@@ -115,7 +115,7 @@ disabled = false
 ".config" = ". "
 
 [git_branch]
-format = '[](fg:tert bg:prim)[$symbol $branch(:$remote_branch)]($style)[](fg:tert bg:prim)'
+format = '[](bg:tert fg:prim)[ $symbol $branch(:$remote_branch) ]($style)[](fg:sec bg:prim)[](fg:prim bg:tert)'
 style = 'fg:prim bold bg:tert'
 symbol = ''
 #ignore_branches = ['master', 'main']
