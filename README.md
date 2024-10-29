@@ -1,6 +1,3 @@
 # hyprdots
-my hyprdotfiles
-<br/>
-HOMESCREEN!
-![homescreen](https://github.com/aarnav03/hyprdots/blob/main/assets/homescreen.png)
+<h1>my hyprdotfiles (work in progress)<h1/>
 
