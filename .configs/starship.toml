@@ -7,6 +7,7 @@ format = """
 $sudo\
 $os\
 $jobs\
+$username\
 $git_status\
 $directory\
 $git_commit$git_state$git_metrics\
@@ -80,7 +81,7 @@ format = '[ ](fg:sec bg:user)[$user ]($style)[](fg:user bg:sec)'
 style_user = 'fg:primt bold bg:user'
 style_root = 'fg:primt bold bg:sudo'
 show_always = true
-disabled = false
+disabled = true
 
 [git_status]
 format = '([$all_status$ahead_behind]($style))[](fg:sec bg:prim)'
@@ -101,8 +102,7 @@ disabled = false
 [directory]
 format = '[ ]($style)[$read_only](fg:primt bg:prim)[$repo_root]($repo_root_style)[$path](fg:primt bold bg:prim)[](fg:prim bg:sec)'
 style = 'fg:sec bg:prim'
-home_symbol = ' ~'
-read_only = '󰉐 '
+home_symbol = '~'
 #read_only_style = 'fg: bg:'
 truncation_length = 2
 truncation_symbol = '…/'
