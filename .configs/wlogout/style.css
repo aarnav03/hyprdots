@@ -2,21 +2,21 @@
 	background-image: none;
 }
 window {
-	background-color: rgba(46, 52, 64, 0.6);
+	background-color: rgba(46, 52, 64, 0);
 }
 button {
-	background-color: #2e3440;
+	background-color:#151123;
   margin:4px;
 	border-radius: 15px;
-	background-repeat: no-repeat;
+background-repeat: no-repeat;
 	background-position: center;
 	background-size: 20%;
-	color: #5e81ac;
+  color:aqua;
 }
 
 button:focus, button:active, button:hover {
-	background-color: #4c566a;
-	color: #81a1c1;
+	background-color: #3b3859;
+	color: azure;
 	outline-style: none;
 }
 
