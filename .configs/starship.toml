@@ -1,0 +1,169 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](fg:sec)\
+$sudo\
+$os\
+$jobs\
+$username\
+$git_status\
+$directory\
+$git_commit$git_state$git_metrics\
+$git_branch\
+$status\
+$time\
+[ ](fg:sec)\
+$cmd_duration\
+$battery\
+$memory_usage\
+$line_break$character
+"""
+
+add_newline = false
+
+palette = "palet"
+
+[palettes.palet]
+prim = '#a7906f' #Primary/Directory Background
+sec = '#3a3a3a' #Accents
+primt = '#3a3a3a' #Primary text color (non-glyphic)
+sudo = '#9c454e'
+user = '#50925b'
+host = '#2596be'
+ip = '#2596be'
+duration = '#8a8a8a'
+# Git Colors
+tert = '#3a3a3a' #Tertiary color, mostly used for GitHub text.
+conflicted = 'red'
+ahead = 'cyan'
+behind = 'orange'
+diverged = 'blue'
+uptodate = 'green'
+untracke = 'purple'
+stashed =  '#6b84eb' #light blue
+modified = 'yellow'
+staged = '#c5e187' #sage
+renamed = '#ce63ff' #lilac
+deleted = '#f54caf' #pink
+grey= '#2e3b52' #grey jevu
+cyan2 = '#008b8b' #close to cyan dark
+c1 = '#004480' # blue light
+c2 = '#002240' # blue dark
+c3 = '#c6e7ff' # blue extra light
+c4 = '#303030' # gray
+c5 = '#808080' # gray light
+
+
+[sudo]
+format = '[ ]($style)'
+style = 'fg:sudo bg:sec'
+disabled = false
+
+[os]
+format = "[$symbol ]($style)"
+style = "fg:ahead bg:sec"
+disabled = false
+
+[os.symbols]
+Arch = ""
+Debian = ""
+Linux = ""
+Macos = ""
+Mint = ""
+NixOS = ""
+openSUSE = ""
+Pop = "" # ""
+
+[username]
+format = '[ ](fg:sec bg:user)[$user ]($style)[](fg:user bg:sec)'
+style_user = 'fg:primt bold bg:user'
+style_root = 'fg:primt bold bg:sudo'
+show_always = true
+disabled = true
+
+[git_status]
+format = '([$all_status$ahead_behind]($style))[](fg:sec bg:prim)'
+style = 'fg:prim bg:tert'
+conflicted = '[](fg:sec bg:conflicted)[](fg:conflicted bg:sec)'
+ahead = '[](fg:sec bg:ahead)[](fg:ahead bg:sec)'
+behind = '[](fg:sec bg:behind)[](fg:behind bg:behind)'
+diverged = '[](fg:sec bg:ahead)[](fg:ahead bg:sec)'
+up_to_date = '[](fg:sec bg:uptodate)[](fg:uptodate bg:sec)'
+untracked = '[](fg:sec bg:untracked)[](fg:untracked bg:sec)'
+stashed = '[](fg:sec bg:stashed)[](fg:stashed bg:sec)'
+modified = '[](fg:sec bg:modified)[](fg:modified bg:sec)'
+staged = '[](fg:sec bg:staged)[](fg:staged bg:sec)'
+renamed = '[](fg:sec bg:renamed)[](fg:renamed bg:sec)'
+deleted = '[](fg:sec bg:deleted)[](fg:deleted bg:sec)'
+disabled = false
+
+[directory]
+format = '[ ]($style)[$read_only](fg:primt bg:prim)[$repo_root]($repo_root_style)[$path](fg:primt bold bg:prim)[](fg:prim bg:sec)'
+style = 'fg:sec bg:prim'
+home_symbol = '~'
+#read_only_style = 'fg: bg:'
+truncation_length = 2
+truncation_symbol = '…/'
+truncate_to_repo = true
+repo_root_format = '[  ](fg:sec bg:prim)[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[ ](bg:prim)'
+repo_root_style	= 'fg:sec bold bg:prim'
+use_os_path_sep = true
+disabled = false
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+".config" = ". "
+
+[git_branch]
+format = '[](bg:tert fg:prim)[ $symbol $branch(:$remote_branch) ](bg:tert fg:c5 bold)[](fg:sec bg:prim)[](fg:prim bg:tert)'
+style = 'fg:prim bold bg:tert'
+symbol = ''
+#ignore_branches = ['master', 'main']
+
+
+[memory_usage]
+disabled = false
+threshold = 80
+symbol = ' '
+style = 'bold dimmed green'
+format= '[ $ram_pct](bold staged)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[ ](bold fg:untracked)'
+#error_symbol = '[ ~>](bold fg:red)'
+vimcmd_symbol = '[ ](bold fg:prim)'
+vimcmd_replace_one_symbol = '[ ](bold fg:purple)'
+vimcmd_replace_symbol = '[ ](bold fg:purple)'
+vimcmd_visual_symbol = '[ ](bold fg:yellow)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "fg:prim bg:sec"
+format = '[ 󰅒 $time](bold fg:cyan2 bg:sec)'
+
+#[battery]
+#full_symbol = ' 🔋'
+#charging_symbol = ' ⚡️'
+#discharging_symbol = ' 󰂎'
+[[battery.display]]
+threshold = 101
+style= 'bold staged'
+charging_symbol = ' 󱐋 '
+discharging_symbol = ' '
+
+[jobs]
+format = '[]($style)[$symbol$number](fg:primt bg:prim)[]($style)'
+style = 'fg:prim bg:sec'
+symbol = ' '
+symbol_threshold = 0
+number_threshold = 0
+disabled = true
+
