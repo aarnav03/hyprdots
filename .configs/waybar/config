@@ -1,6 +1,6 @@
 {
   "layer": "top", "position": "top",
-  "modules-left": ["custom/logo", "clock", "disk", "memory", "cpu","custom/powerDraw", "hyprland/window" ],
+  "modules-left": ["custom/logo", "clock", "custom/powerDraw", "hyprland/window" ],
   "modules-center": [  "hyprland/workspaces"],
   "modules-right": ["backlight", "idle_inhibitor","bluetooth" , "pulseaudio" , "network" ,  "battery"],
   "reload_style_on_change":true,
@@ -38,7 +38,7 @@
 
 
 "clock": {
-      "format": "{:%I:%M %p |%d-%a %b|}",
+      "format": "{:%I:%M %p ⏽ %d-%a %b}",
       "interval":1,
       "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
       "calendar-weeks-pos": "right",
@@ -174,7 +174,7 @@
   "custom/powerDraw": {
     "format": "{}",
     "interval": 2,
-    "exec": "~/pdraw.sh",
+    "exec": "~/.config/waybar/scripts/pdraw.sh",
   }
 
 }
