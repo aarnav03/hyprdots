@@ -1,0 +1,74 @@
+format = """
+[](fg:#ffffff)\
+$os\
+[](fg:#ffffff bg:c2)\
+$directory\
+[](fg:c2 bg:#303030)\
+$git_branch\
+$cmd_duration\
+[](fg:c4 bg:c2)\
+$time\
+[](fg:c2 bg:c1)\
+[](fg:#004480)\
+$line_break\
+$character\
+"""
+
+palette = 'main'
+add_newline = true
+
+[palettes.main]
+c1 = '#004480' # blue light
+c2 = '#002240' # blue dark
+c3 = '#c6e7ff' # blue extra light
+c4 = '#303030' # gray
+c5 = '#808080' # gray light
+
+[os]
+format = '[$symbol ](fg:#000000 bg:#ffffff)'
+disabled = false
+
+[os.symbols]
+Android = ''
+Arch = ''
+Debian = ''
+EndeavourOS = ''
+Fedora = ''
+openSUSE = ''
+Pop = '' # ''
+SUSE = ''
+
+[directory]
+format = '[ 󰷏 $path ](fg:c3 bg:c2 italic)'
+truncation_length = 2
+
+[git_branch]
+format = '[ 󰘬 $branch ](fg:#808080 bg:c4)'
+
+
+
+
+
+
+[fill]
+style = 'fg:c5 bg:c4'
+symbol = '.'
+
+[cmd_duration]
+min_time = 500
+format = '[ $duration ](fg:yellow bg:c4 bold)'
+
+
+[time]
+disabled = false
+format = '[ $time ](fg:c3 bg:c2)'
+time_format = '󰦖 %H:%M'
+
+[username]
+format = '[  $user ](fg:#ffffff bg:c1)'
+show_always = true
+
+[character]
+format = """[>](fg:c4) """
+success_symbol = '[≫](fg:#ffffff)'
+error_symbol = '[×](bold red)'
