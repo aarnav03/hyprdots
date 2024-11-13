@@ -1,7 +1,7 @@
 format = """
-[](fg:#ffffff)\
+[](fg:#2a2a3a)\
 $os\
-[](fg:#ffffff bg:c2)\
+[](fg:#2a2a3a bg:c2)\
 $directory\
 [](fg:c2 bg:#303030)\
 $git_branch\
@@ -25,34 +25,32 @@ c4 = '#303030' # gray
 c5 = '#808080' # gray light
 
 [os]
-format = '[$symbol ](fg:#000000 bg:#ffffff)'
+format = '[$symbol ](fg:c3 bg:#2a2a3a)'
 disabled = false
 
 [os.symbols]
-Android = ''
 Arch = ''
 Debian = ''
-EndeavourOS = ''
 Fedora = ''
+Mint = ""
 openSUSE = ''
+Macos = ""
 Pop = '' # ''
 SUSE = ''
 
 [directory]
-format = '[ 󰷏 $path ](fg:c3 bg:c2 italic)'
+format = '[ $path ](fg:c3 bg:c2 italic)'
+home_symbol = '~'
 truncation_length = 2
 
 [git_branch]
 format = '[ 󰘬 $branch ](fg:#808080 bg:c4)'
 
 
-
-
-
-
 [fill]
 style = 'fg:c5 bg:c4'
 symbol = '.'
+disabled=true
 
 [cmd_duration]
 min_time = 500
@@ -62,11 +60,12 @@ format = '[ $duration ](fg:yellow bg:c4 bold)'
 [time]
 disabled = false
 format = '[ $time ](fg:c3 bg:c2)'
-time_format = '󰦖 %H:%M'
+time_format = '󰅒 %H:%M'
 
 [username]
 format = '[  $user ](fg:#ffffff bg:c1)'
 show_always = true
+disabled=true
 
 [character]
 format = """[>](fg:c4) """
