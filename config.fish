@@ -8,7 +8,6 @@ alias cl='bash ~/cl.sh'
 
 alias m='bash ~/m.sh'
 alias wr='bash ~/wbr.sh' 
-alias sw='bash ~/.stopwatch.sh' 
 alias neofetch='fastfetch --config ~/ff.jsonc'
 function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
