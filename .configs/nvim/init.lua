@@ -23,6 +23,16 @@ require("lazy").setup({
   },
 
   { import = "plugins" },
+  { 'neovim/nvim-lspconfig' },        -- LSP configuration
+  { 'williamboman/mason.nvim' },      -- Mason for easy LSP server installation
+  { 'williamboman/mason-lspconfig.nvim' },  -- Mason + lspconfig integration
+
+  -- Auto-completion (nvim-cmp)
+  { 'hrsh7th/nvim-cmp' },             -- Main completion plugin
+  { 'hrsh7th/cmp-nvim-lsp' },         -- LSP completions
+  { 'hrsh7th/cmp-buffer' },           -- Buffer completions
+  { 'hrsh7th/cmp-path' },             -- Path completions
+  { 'hrsh7th/cmp-vsnip' },
 }, lazy_config)
 
 -- load theme
@@ -30,8 +40,12 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
-require "nvchad.autocmds"
+require "autocmds"
+require('custom.lsp')  -- LSP setup
+require('custom.cmp')  -- nvim-cmp setup
 
 vim.schedule(function()
   require "mappings"
 end)
+
+

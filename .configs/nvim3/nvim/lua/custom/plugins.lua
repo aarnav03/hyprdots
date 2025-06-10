@@ -15,7 +15,7 @@ local plugins = {
         "prettier",
         "stylua",
         "gopls",
-        "clang",
+        "clangd",
       },
     },
   }

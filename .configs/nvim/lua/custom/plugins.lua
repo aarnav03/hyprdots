@@ -1,34 +1,13 @@
-local plugins = {
-  {
-  "neovim/nvim-lspconfig",
-   config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-   end,
-  },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "html-lsp",
-        "prettier",
-        "stylua",
-        "gopls",
-        "pyright"
-      },
-    },
-  }
+return {
+  -- LSP Setup
+  { 'neovim/nvim-lspconfig' },        -- LSP configuration
+  { 'williamboman/mason.nvim' },      -- Mason for easy LSP server installation
+  { 'williamboman/mason-lspconfig.nvim' },  -- Mason + lspconfig integration
+
+  -- Auto-completion (nvim-cmp)
+  { 'hrsh7th/nvim-cmp' },             -- Main completion plugin
+  { 'hrsh7th/cmp-nvim-lsp' },         -- LSP completions
+  { 'hrsh7th/cmp-buffer' },           -- Buffer completions
+  { 'hrsh7th/cmp-path' },             -- Path completions
+  { 'hrsh7th/cmp-vsnip' },            -- Snippet completions (if using snippets)
 }
-
-return plugins
-
-
-{
-  "neovim/nvim-lspconfig",
-   config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-   end,
-},
-
