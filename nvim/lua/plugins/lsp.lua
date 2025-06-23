@@ -1,72 +1,71 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-	config = function ()
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-	    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+			local lspconfig = require("lspconfig")
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+			})
 
-	    local lspconfig = require("lspconfig")
-	    lspconfig.lua_ls.setup({
-		capabilities = capabilities})
-	    lspconfig.pyright.setup({
-		capabilities = capabilities})
-	    lspconfig.rust_analyzer.setup({
-		capabilities = capabilities})
-	    lspconfig.clangd.setup({
-		capabilities = capabilities})
+			--	vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+				border = "shadow", -- or "single", "double", "shadow", "none"
+			})
+	    require("lspconfig").clangd.setup({})
+		end,
+		vim.diagnostic.config({
+			virtual_text = true,
+			signs = true,
+			underline = true,
+			update_in_insert = false,
+			severity_sort = true,
+		}),
+	},
 
-	    vim.keymap.set('n','K',vim.lsp.buf.hover,{})
-	    vim.keymap.set('n','gd',vim.lsp.buf.definition,{})
-	    vim.keymap.set('n','<leader>ca',vim.lsp.buf.code_action,{})
-	end,
-vim.diagnostic.config({
-		virtual_text = true,
-		signs = true,
-		underline = true,
-		update_in_insert = false,
-		severity_sort = true,
-})
+	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	},
 
-  },
+	{
+		"mason-org/mason-lspconfig.nvim",
+		opts = {
+			ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "clangd" },
+		},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
+	},
+	{
+		"nvimdev/lspsaga.nvim",
+		config = function()
+			require("lspsaga").setup({
+				symbol_in_winbar = { enable = false },
+			})
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+	},
 
-  {
-    "williamboman/mason.nvim",
-    config = function()
-	require("mason").setup()
-    end
-  },
-
---[[  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright","clangd" },
-      })
-
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      local servers = { "lua_ls", "pyright", "clangd" }
-      for _, server in ipairs(servers) do
-        lspconfig[server].setup({
-          capabilities = capabilities,
-        })
-      end
-    end,
-  },
-    ]]--
-{
-    "mason-org/mason-lspconfig.nvim",
-    opts = {
-        ensure_installed = { "lua_ls", "rust_analyzer","pyright","clangd" },
-    },
-    dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
-    },
-},
-
-   --[[ {
+	--[[ {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -117,6 +116,27 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
-    ]]--
-}
+    ]]
+	--
+	--
+	--[[  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "pyright","clangd" },
+      })
 
+      local lspconfig = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      local servers = { "lua_ls", "pyright", "clangd" }
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup({
+          capabilities = capabilities,
+        })
+      end
+    end,
+  },
+    ]]
+	--
+}
