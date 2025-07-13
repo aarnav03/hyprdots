@@ -1,8 +1,8 @@
 {
   "layer": "top", "position": "top",
-  "modules-left": ["custom/logo", "clock#1","clock#2", "custom/powerDraw", "hyprland/window" ],
+  "modules-left": ["custom/logo", "clock", "custom/powerDraw", "hyprland/window","custom/notification" ],
   "modules-center": [  "hyprland/workspaces"],
-  "modules-right": ["backlight", "idle_inhibitor","bluetooth" , "pulseaudio" , "network" ,  "battery"],
+  "modules-right": ["tray","backlight", "idle_inhibitor","bluetooth" , "pulseaudio" , "network" ,  "battery","custom/notification",],
   "reload_style_on_change":true,
 
   "custom/logo": {
@@ -23,9 +23,8 @@
     "format-icons": {
        "active" : "󱨇",
        "default":"",
-        
     },
-    "disable-scroll": false,
+    "disable-scroll": true,
     "rotate": 0,
     "all-outputs": true,
     "active-only": false,
@@ -37,19 +36,23 @@
 
 
 
-"clock#1": {
-      "format": "{:%I:%M %p }",
+"clock": {
+      "format": "{:%I:%M %p  ⏽  %d-%a %b}",
+      "interval":1,
+      "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "calendar-weeks-pos": "right",
+      "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",
+      "format-calendar": "<span color='#aeaeae'><b>{}</b></span>",
+      "format-calendar-weeks": "<span color='#aeaeae'><b>W{:%V}</b></span>",
+      "format-calendar-weekdays": "<span color='#aeaeae'><b>{}</b></span>"
       },
-"clock#2":{
-  "format":"{:%a %d-%b}"
-},
 
   "bluetooth": {
   "format-on": "",
   "format-off": "",
   "format-disabled": "󰂲",
-  "format-connected": "󰂴",
-  "format-connected-battery": "{device_battery_percentage}% 󰥰 ",
+  "format-connected": "󰂱 ",
+  "format-connected-battery": "{device_battery_percentage}%   ",
   "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
   "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
   "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -65,7 +68,7 @@
       "tooltip-format": "{ipaddr}",
       "tooltip-format-wifi": "{essid} {frequency}Ghz |{bandwidthDownBits}  {bandwidthUpBits}  ",
       "tooltip-format-ethernet": "{ifname} 🖧 | {ipaddr}",
-      "on-click": "networkmanager_dmenu"
+      "on-click": "bash ~/rofi-wifi-menu/rofi-wifi-menu.sh"
     },
 
 "battery": {
@@ -73,7 +76,7 @@
         "states": {
             "good": 95,
             "warning": 30,
-            "critical": 20
+            "critical": 15
         },
         "format": "{capacity}%  {icon} ",
         "format-charging": "{capacity}% 󰂄 ",
@@ -127,7 +130,7 @@
 },
 
  "hyprland/window": {
-    "format": " {class} ",
+    "format": "( {class} )",
     "rewrite": {
          "(.*) - Mozilla Firefox": "🌎 $1",
          "(.*) - zsh": "> [$1]"
@@ -144,13 +147,10 @@
     "bluetooth": " 󰥰 ",
     "handsfree": "",
     "headset": "󱡬",
-    "phone": "",
-    "portable": "",
-    "car": "",
     "default": [" "]
   },
   "justify": "center",
-  "on-click": "amixer sset Master toggle",
+  "on-click": "pavucontrol",
   "on-click-right": "pavucontrol",
   "tooltip-format": "{icon}  {volume}%"
 },
@@ -168,10 +168,43 @@
 },
 
   "custom/powerDraw": {
-    "format": " {} 󱐥 ",
+    "format": "{}",
     "interval": 2,
-    "exec": "~/pdraw.sh",
+    "exec": "~/.config/waybar/scripts/pdraw.sh",
   }
 
 }
-
+  "custom/notification": {
+    "tooltip": false,
+    "format": "" 
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  "custom/spotify": {
+    "format": "{icon} {}",
+    "escape": true,
+    "return-type": "json",
+    "max-length": 40,
+    "interval": 30, // Remove this if your script is endless and write in loop
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "killall spotify",
+    "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "on-scroll-up" : "playerctl -p spotify next",
+    "on-scroll-down" : "playerctl -p spotify previous",
+    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+    "exec-if": "pgrep spotify"
+},
