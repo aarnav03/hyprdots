@@ -1,161 +1,130 @@
 * {
-    border: none;
-    font-size: 16px;
-    font-family: "Adwaita Sans Extralight" ;
-    min-height: 16px;
-    border-color:teal;
+	font-size: 1.125rem;
+	/* 
+	margin-left: 0.75em;
+	margin-right: 0.75em;
+ */
+	border-radius: 0.6em;
+	min-height: 0;
 }
-tooltip {
-background: rgba(47,52,65,0.5);
-}
+
+
 window#waybar {
-  background: transparent;
-  margin: 5px;
- }
+	background: rgba(30, 30, 30, 0.4);
+	padding-bottom: 0.125em;
+}
 
 #custom-logo {
-  padding: 0 10px;
+	margin-left: 0.12em;
+	margin-right: 1em;
+	padding: 0 0.75em 0 0.75em;
+	color: whitesmoke;
+	background-color: rgba(11, 12, 18, 1);
+
 }
 
-.modules-right {
-  padding-left: 5px;
-  border-radius: 7200px 0 0 7200px;
-  margin-top: 0px;
-  border-style:solid;
-  border-width: 0 0 0.12em 0.12em;
-  background: rgba(0, 0, 0, 1);
-  color:grey;
-  opacity: 1.0;
+#workspaces {
+	background-color: rgba(30, 30, 40, 0.8);
 }
 
-.modules-center {
-  background:transparent;
-  border-radius: 720px;
-  border-top:1px;
-  margin: 0 1.3em 0 1.3em;
-  opacity: 1.0;
-  padding: 0 3px 0 3px;
+#workspaces button {
+	color: rgba(200, 255, 255, 0.5);
+	animation: ws_normal 20s ease-in-out 1;
+	padding-left: 0.8em;
+	padding-right: 1em;
+	/* background-color: rgba(30, 30, 30, 0.9); */
 }
 
-.modules-left {
-  border-radius: 0 720px 720px 0;
-  border-style:solid;
-  border-width: 0 0.12em 0.12em 0;
-  margin-top: 0px;
-  background: rgba(0, 0, 0, 1); 
-  opacity: 1.0;
-  color:grey;
+#workspaces button.active {
+	color: rgba(200, 205, 205, 1);
 }
 
-#battery,
-#custom-powerDraw,
-#bluetooth,
-#pulseaudio,
-#network,
-#disk,
-#memory,
-#backlight,
-#cpu,
-#custom-weather,
-#idle_inhibitor,
-#tray,
-#custom-notification,
-#window,
+#custom-player {
+	margin-left: 1em;
+	margin-right: 1em;
+	padding: 0 1em 0 1em;
+	color: whitesmoke;
+	background-color: rgba(21, 12, 28, 1);
+}
+
 #clock {
-  padding: 0 5px;
-  margin:0 2px 0 2px;
+	color: aqua;
+	padding: 0 1em 0 1em;
+	background-color: rgba(11, 12, 18, 1);
+	margin-left: 1em;
+	margin-right: 1em;
+	padding: 0 0.75em 0 0.75em;
+
+}
+
+#tray {
+	/* color: gold; */
+	padding: 0 0.5em 0 0.5em;
+	background-color: rgba(11, 12, 18, 1);
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	padding: 0 0.75em 0 0.75em;
+
+}
+
+#custom-powerDraw {
+
+	padding: 0 0.5em 0 0.5em;
+	background-color: rgba(11, 12, 18, 1);
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	padding: 0 0.75em 0 0.75em;
+	color: rosybrown;
+
+}
+
+#bluetooth,
+#network,
+#pulseaudio {
+	padding: 0 0.5em 0 0.5em;
+	background-color: rgba(11, 12, 18, 1);
+	margin-left: 0.5em;
+	/* margin-right: 0.5em; */
+	padding: 0 0.75em 0 0.75em;
+
+}
+
+#bluetooth {
+	color: rgba(137, 180, 220, 1);
+}
+
+#network {
+	color: rgba(142, 240, 162, 1);
 }
 
 #pulseaudio {
-  padding-top: 3px;
+	color: white;
 }
 
-#temperature.critical,
-#pulseaudio.muted {
-  color: #FF0000;
-  padding-top: 0;
-}
-
-#network{
-  color :lightcyan;
-}
-
-
-#clock{
-  color: lightcyan;
-}
-#battery.charging {
-    color: #77DD77;
-    background-color: #000000;
+#battery {
+	padding: 0 0.5em 0 0.5em;
+	background-color: rgba(11, 12, 18, 1);
+	margin-left: 0.5em;
+	/* margin-right: 0.5em; */
+	padding: 0 0.75em 0 0.75em;
 
 }
 
 #battery:not(.charging) {
-    background-color: #000000;
-    color:darkturquoise;
+	color: whitesmoke;
+}
+
+#battery.charging {
+	color: greenyellow;
+
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #77DD77;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-/*#workspaces{*/
-  /*padding:0 4px 0 4px;*/
-  /*border-radius: 12px;*/
-  /*background: #C2D3D3;*/
-  /*opacity: 0.4;*/
-/*}*/
-
-#workspaces button {
-    color: #EAB2C2;
-    animation: ws_normal 20s ease-in-out 1;
-    padding-left: 0.8em;
-    padding-right: 1em;
-}
-
-#workspaces button.persistent{
-    color: #D5A5AA;
-}
-
-#workspaces button.active {
-    background: rgba(70,10,50,1);
-    color: #D5A5AA;
-    /*padding:0 1.5em 0 1.5em;*/
-    /*padding-right: 1em;*/
-    /*padding-left: 1em;*/
-    animation: ws_active 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-    border-radius:2em;
-}
-
-#workspaces button.persistent:nth-child(2){
-    color: #D5A5AA;
-}
-
-#workspaces button.persistent:nth-child(3){
-    color: #D5A5AA;
-}
-
-#workspaces button:hover {
-    background: #e2e2e2;
-    color: #D5A5AA;
-    animation: ws_hover 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-    border-radius: 1.3em;
-}
-#custom-notification {
-  font-family: "FiraCode Nerd Font";
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+	background-color: #f53c3c;
+	color: goldenrod;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }

@@ -1,0 +1,56 @@
+* {
+	background-image: none;
+	all: unset;
+}
+
+window {
+	background-color: rgba(30, 30, 46, 0.2);
+}
+
+button {
+	background-color: #1e1e1e;
+	margin: 4px;
+	border-radius: 15px;
+	border-color: #4c566a;
+	border-width: 0.25em;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50%;
+	color: aqua;
+	animation: gradient_f 20s ease-in infinite;
+
+}
+
+button:focus,
+button:active,
+button:hover {
+	background-color: #3b4252;
+	/*background-color: #151123;*/
+
+	/* color: azure; */
+	outline-style: none;
+}
+
+#lock {
+	background-image: image(url("./icon/lock-svgrepo-com.svg"), url("./icon/lock-svgrepo-com.svg"));
+}
+
+#logout {
+	background-image: image(url("./icon/logout-svgrepo-com.svg"), url("./icon/logout-svgrepo-com.svg"));
+}
+
+#suspend {
+	background-image: image(url("./icon/sleep-svgrepo-com.svg"), url("./icon/sleep-svgrepo-com.svg"));
+}
+
+#hibernate {
+	background-image: image(url("./icon/hibernate-button-svgrepo-com.svg"), url("./icon/hibernate-button-svgrepo-com.svg"));
+}
+
+#shutdown {
+	background-image: image(url("./icon/shut-down-1431-svgrepo-com.svg"), url("./icon/shut-down-1431-svgrepo-com.svg"));
+}
+
+#reboot {
+	background-image: image(url("./icon/restart-svgrepo-com.svg"), url("./icon/restart-svgrepo-com.svg"));
+}
