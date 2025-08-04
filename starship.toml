@@ -1,0 +1,93 @@
+format = """
+[╭─](fg:osbg)\
+$os\
+[](fg:osbg bg:crust)\
+$directory\
+[](fg:crust bg:mantle)\
+$git_branch\
+[](fg:mantle bg:c4)\
+$c\
+$cpp\
+$lua\
+$python\
+$rust\
+[](fg:c4)\
+$cmd_duration\
+$line_break\
+[╰─](fg:osbg)\
+$character\
+"""
+
+palette = 'main'
+add_newline = true
+
+[palettes.main]
+c1 = '#004480' # blue light
+c2 = '#002240' # blue dark
+c3 = '#c6e7ff' # blue extra light
+c4 = '#202020' # gray
+c5 = '#808080' # gray light
+osbg = '#1e232e'
+osbg1 = '#2a2a3a'
+peach = '#fab387'
+lavender = "#b4befe"
+surface0 = "#313244"
+mantle = "#181825"
+base = "#1e1e2e"
+crust = "#111111"
+rad = "#f38ba8"
+text = "#cdd6f4"
+
+[os]
+format = '[ $symbol ](fg:c3 bg:osbg)'
+disabled = false
+
+[os.symbols]
+Arch = ''
+Debian = ''
+Fedora = ''
+Mint = ""
+openSUSE = ''
+Pop = '' # ''
+SUSE = ''
+
+[directory]
+format = '[ $path ](fg:c3 bg:crust italic)'
+home_symbol = '~'
+truncation_length = 2
+
+[git_branch]
+format = '[ 󰘬 $branch ](fg:peach bg:mantle)'
+
+[c]
+symbol = ""
+format = '[ $symbol ]( fg:text bg:c4)'
+[cpp]
+symbol = ""
+format = '[[ $symbol ]( fg:text bg:c4)]'
+[python]
+symbol = ""
+style = " fg:yellow bg:c4"
+format = '[ $symbol ]($style)'
+[rust] 
+symbol = ""
+style = "fg:red bg:c4"
+format = '[ $symbol ]($style)'
+[lua]
+symbol = "󰢱"
+style = "bg:c4"
+format = '[ $symbol ](fg:#00006c bg:c4)'
+
+[fill]
+style = 'fg:c5 bg:c4'
+symbol = '.'
+disabled=true
+
+[cmd_duration]
+min_time = 500
+format = '[[──](fg:c4)$duration ](fg:yellow bg: bold)'
+
+[character]
+format = """[](fg:c5) """
+success_symbol = '[≫](fg:#ffffff)'
+error_symbol = '[×](bold red)'
